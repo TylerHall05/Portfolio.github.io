@@ -1,11 +1,18 @@
+/* GLOBAL */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #f7f7f7;
   color: #333;
+  opacity: 0;
+  animation: fadeInBody 1s ease forwards;
 }
 
-/* Header */
+@keyframes fadeInBody {
+  to { opacity: 1; }
+}
+
+/* HEADER */
 header {
   text-align: center;
   padding: 60px 20px;
@@ -13,6 +20,27 @@ header {
   color: white;
 }
 
+.slide-down {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: slideDown 1s ease forwards;
+}
+
+@keyframes slideDown {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-delayed {
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* NAVBAR */
 nav {
   display: flex;
   justify-content: center;
@@ -25,31 +53,68 @@ nav a {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  transition: 0.3s ease;
 }
 
+nav a:hover {
+  color: #00aaff;
+  transform: scale(1.1);
+}
+
+/* SECTIONS */
 section {
   max-width: 800px;
   margin: 40px auto;
   padding: 0 20px;
 }
 
+/* Scroll animations */
+.section-animate {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease;
+}
+
+.section-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* PROJECT CARDS */
 .project {
   background: white;
   padding: 20px;
   margin: 20px 0;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project:hover {
+  transform: scale(1.03);
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
 }
 
 .project a {
   color: #0077ff;
   text-decoration: none;
+  transition: 0.3s ease;
 }
 
+.project a:hover {
+  color: #0055cc;
+}
+
+/* FOOTER */
 footer {
   text-align: center;
   padding: 20px;
   background: #222;
   color: white;
   margin-top: 40px;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards;
 }
